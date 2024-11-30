@@ -1,2 +1,2 @@
-pip install jupyterlab
+pip install -r requirements.txt
 jupyter lab
