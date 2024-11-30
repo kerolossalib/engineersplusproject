@@ -1,0 +1,10 @@
+# Python files
+*.pyc
+__pycache__/
+
+# Environment variables
+.env
+
+# Model checkpoints
+models/fine-tuned/*
+models/llama-base/*
