@@ -8,3 +8,4 @@ __pycache__/
 # Model checkpoints
 models/fine-tuned/*
 models/llama-base/*
+venv
