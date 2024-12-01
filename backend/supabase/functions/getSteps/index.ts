@@ -14,13 +14,12 @@ import {
 } from "./constants.ts";
 
 const groq = new Groq({
-  apiKey: "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",
+  apiKey: Deno.env.get("GROQ_API_KEY"),
 });
 
 // Supabase initialization
-const supabaseUrl = "https://yvxceyfobkrgxchrrrxl.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2eGNleWZvYmtyZ3hjaHJycnhsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjk5Mjc1MywiZXhwIjoyMDQ4NTY4NzUzfQ.FFukQ6tN7Hs4qefq7sfBHnsHhGRmniUcLM_-fx6Cf-4";
+const supabaseUrl = Deno.env.get("APP_SUPABASE_URL");
+const supabaseKey = Deno.env.get("APP_SUPABASE_KEY");
 // const supabaseUrl = Deno.env.get("APP_SUPABASE_URL");
 // const supabaseKey = Deno.env.get("APP_SUPABASE_KEY");
 
@@ -134,7 +133,6 @@ Deno.serve(async (req, res) => {
 
     // Iterate over steps to insert them into the roadmap_steps table
     for (const step of stepsList) {
-
       // Insert a single step into the roadmap_steps table
       const { data: insertedStep, error: stepError } = await supabase
         .from("roadmap_steps")
@@ -172,7 +170,6 @@ Deno.serve(async (req, res) => {
         );
       }
     }
-
 
     return new Response(JSON.stringify({ data: "insertedSteps" }), {
       status: 200,
